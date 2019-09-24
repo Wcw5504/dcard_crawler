@@ -3,6 +3,7 @@
 from bs4 import BeautifulSoup
 import requests
 import json
+import os
 
 #%%
 
@@ -37,6 +38,8 @@ def get_comment(id):
 board = input("請輸入看板英文名: ")
 last = 0
 k = 1
+
+os.mkdir(board)
 for i in range(5):
     a_list = get_article(board, last)
 
@@ -46,6 +49,6 @@ for i in range(5):
     for j in a_list:
         article = {"post": get_post(j["id"]), "comment": get_comment(j["id"])}
         
-        with open(f"./json/{k:03d}.json", "w+") as f:
+        with open(f"./{board}/{k:03d}.json", "w+") as f:
             f.write(json.dumps(article, ensure_ascii=False, indent=2))
-        k+=1
+        k += 1
