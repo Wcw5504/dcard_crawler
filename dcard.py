@@ -39,7 +39,9 @@ board = input("請輸入看板英文名: ")
 last = 0
 k = 1
 
-os.mkdir(board)
+if not(os.path.exists(f"./{board}/")):
+    os.mkdir(board)
+
 for i in range(5):
     a_list = get_article(board, last)
 
