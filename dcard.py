@@ -1,11 +1,7 @@
-#%%
-
 from bs4 import BeautifulSoup
 import requests
 import json
 import os
-
-#%%
 
 # 取得json並轉換為dict
 def get_json(url):
@@ -33,8 +29,6 @@ def get_comment(id):
     source = f"{api}/posts/{id}/comments?popular=false&limit=30"
     return get_json(source)
 
-#%%
-
 board = input("請輸入看板英文名: ")
 last = 0
 k = 1
@@ -45,7 +39,7 @@ if not(os.path.exists(f"./{board}/")):
 for i in range(5):
     a_list = get_article(board, last)
 
-    #取得尾篇文章的ID
+    # 取得尾篇文章的ID
     last = str(a_list[-1]["id"])
 
     for j in a_list:
