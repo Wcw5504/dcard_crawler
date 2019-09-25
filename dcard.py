@@ -49,6 +49,6 @@ for i in range(5):
     for j in a_list:
         article = {"post": get_post(j["id"]), "comment": get_comment(j["id"])}
         
-        with open(f"./{board}/{k:03d}.json", "w+") as f:
+        with open(f"./{board}/{k:03d}.json", "w+", encoding="UTF-8") as f:
             f.write(json.dumps(article, ensure_ascii=False, indent=2))
         k += 1
